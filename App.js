@@ -1,8 +1,8 @@
 import React from 'react';
-import MyStack from './src/Navigation/navigation';
+import MyStack from '../TP2_DAI_REACT_NATIVE/src/navigation/navigation';
 
 export default function App() {
-  return (
+  return ( 
     <MyStack/>  
   );
 }
