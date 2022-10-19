@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Flatlist } from 'react-native';
+import { StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
 import * as Contacts from 'expo-contacts';
 import {useState, useEffect} from 'react';
 
@@ -31,11 +31,11 @@ export default function App() {
   ()
   }, [])
 
-  let getNumero = (contact) => {
-    if (contact.phoneNumbers) {
-      return contact.phoneNumbers.map((phoneNumber, index) => {
+  let getNumero = () => {
+    if (contactos.phoneNumbers) {
+      return contactos.phoneNumbers.map((phoneNumber, index) => {
         <View key={index}>
-          <Text>Telefono: {phoneNumber.number}</Text>
+          <Text>{phoneNumber.label}: {phoneNumber.number}</Text>
         </View>
       })
     }
@@ -43,14 +43,16 @@ export default function App() {
 
   let getContactos = () => {
     if(contactos !== undefined){
-      return contactos.map((contact, index) => {
         return (
-          <View key={index}>
-            <Text>Nombre: {contact.firstName} {contact.lastName}</Text>
-            {getNumero(contact)}
+          <View>
+              <FlatList data={contactos}
+              keyExtractor={ (item) => item.id}
+              renderItem = {({item}) => ( 
+              <Text>Nombre: {item.firstName} {item.lastName} // Numero: {item.phoneNumbers && item.phoneNumbers[0] && item.phoneNumbers[0].number} </Text>
+          )}
+        />
           </View>
-        );
-      });
+      );
     }
     else{
       return <Text>Esperando contactos...</Text>
