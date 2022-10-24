@@ -1,44 +1,39 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 //screens
 import Home from "../screens/Home";
 import Contactos from "../screens/Contactos";
 import HoraActual from "../screens/HoraActual";
 
-const MainStackNavigator = createNativeStackNavigator();
+const MainStack =()=>{
 
-function MyStack(){
+    const Stack = createNativeStackNavigator()
+   
     return(
-        <NavigationContainer>
-        <MainStackNavigator.Navigator
+    <NavigationContainer>
+        <Stack.Navigator
             initialRouteName="Home"
         >
-            <MainStackNavigator.Screen
-                name="Home"
-                component={Home}
-                options={{
-                    headerShown: false
-                }}
+            <Stack.Screen
+                
+                name='Home'
+                component={ Home }
             />
-             <MainStackNavigator.Screen
-                name="Contactos"
-                component={Contactos}
-                options={{
-                    headerShown: false
-                }}
+            <Stack.Screen
+                name='Contactos'
+                component={ Contactos }
             />
-             <MainStackNavigator.Screen
-                name="HoraActual"
-                component={HoraActual}
-                options={{
-                    headerShown: false
-                }}
+            <Stack.Screen
+                name='HoraActual'
+                component={ HoraActual }
             />
-        </MainStackNavigator.Navigator>
-        </NavigationContainer>
-    );
+        </Stack.Navigator>
+    </NavigationContainer>
+
+);
+
 }
 
-export default MyStack;
+export default MainStack;

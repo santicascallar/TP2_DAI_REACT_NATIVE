@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
 import * as Contacts from 'expo-contacts';
 import {useState, useEffect} from 'react';
@@ -31,7 +30,7 @@ export default function Contactos() {
   ()
   }, [])
 
-  let getNumero = () => {
+  /*let getNumero = () => {
     if (contactos.phoneNumbers) {
       return contactos.phoneNumbers.map((phoneNumber, index) => {
         <View key={index}>
@@ -39,7 +38,7 @@ export default function Contactos() {
         </View>
       })
     }
-  }
+  }*/
 
   let getContactos = () => {
     if(contactos !== undefined){
@@ -63,7 +62,6 @@ export default function Contactos() {
     <View style={styles.container}>
       <Text>Lista Contactos:</Text>
       {getContactos()}
-      <StatusBar style="auto" />
     </View>
   );
 }

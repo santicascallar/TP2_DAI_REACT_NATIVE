@@ -1,16 +1,17 @@
-import { StyleSheet, Text, View  } from 'react-native';
-import Button from '../components/Button';
+import { StyleSheet, Text, View, Button  } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 
-export default function App() {
+export default function Home() {
 
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      <Text>Lista de opciones:</Text>
-      <Button text={"Contactos"} onPress={() => navigation.navigate('Contactos')}/>
-      <Button text={"Hora Actual"} onPress={() => navigation.navigate('HoraActual')}/>
+      <Text style = {styles.text}>Lista de Contactos</Text>
+      <Button onPress={() => navigation.navigate('Contactos')} title="Contactos"/>
+
+      <Text style = {styles.text}>Hora y clima:</Text>
+      <Button onPress={() => navigation.navigate('HoraActual')} title="Hora Actual"/>
     </View>
   );
 }
@@ -22,4 +23,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  text: {
+    margin: 5,
+  }
 });
