@@ -12,6 +12,9 @@ export default function Home() {
 
       <Text style = {styles.text}>Hora y clima:</Text>
       <Button onPress={() => navigation.navigate('HoraActual')} title="Hora Actual"/>
+
+      <Text style = {styles.text}>Llamado de Emergencia</Text>
+      <Button onPress={() => navigation.navigate('LlamadoEmergencia')} title="Llamado de Emergencia"/>
     </View>
   );
 }

@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from "../screens/Home";
 import Contactos from "../screens/Contactos";
 import HoraActual from "../screens/HoraActual";
+import LlamadoEmergencia from "../screens/LlamadoEmergencia";
 
 const MainStack =()=>{
 
@@ -28,6 +29,10 @@ const MainStack =()=>{
             <Stack.Screen
                 name='HoraActual'
                 component={ HoraActual }
+            />
+            <Stack.Screen
+                name='LlamadoEmergencia'
+                component={ LlamadoEmergencia }
             />
         </Stack.Navigator>
     </NavigationContainer>

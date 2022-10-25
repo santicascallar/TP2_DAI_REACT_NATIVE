@@ -48,15 +48,11 @@ export default function HoraActual() {
     }, []);
   
   //Obtener el clima: https://www.youtube.com/watch?v=M8mslcfiEQI
-  //https://developer.weatherunlocked.com/signup/success (Confirmar Email)
-  //https://www.youtube.com/watch?v=MjJ1A-Puszw (Obtener current Hour)
 
-  useEffect (async() => {
-    const data = await getClima(); 
-    setClima(data);
-    console.log(data)
+  /*useEffect (() => {
+    getClima().then(data => setClima(data));
 
-  },[]);
+  },[]);*/
   
   return (
     <View style={styles.container}>
@@ -64,7 +60,6 @@ export default function HoraActual() {
       <Text>Latitud: {latitud}</Text>
       <Text>Longitud: {longitud}</Text>
       <Text>Hora: {currentHour}</Text>
-      <Text>Clima: {clima.current.temp_c}</Text>
     </View>
   );
 }
