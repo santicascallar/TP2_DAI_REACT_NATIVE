@@ -2,11 +2,13 @@ import react from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import * as Location from 'expo-location';
 import { useState, useEffect } from 'react';
+import { getClima } from '../../services/funcionalidadService';
 
 export default function HoraActual() {
   let [error, setError] = useState(undefined);
   const [location, setLocation] = useState(undefined);
   const [currentHour, setCurrentHour] = useState('');
+  const [clima, setClima] = useState([]);
 
 
   useEffect(() => {
@@ -23,11 +25,11 @@ export default function HoraActual() {
     })();
   }, []);
 
-    let text = 'Waiting..';
+    let latitud = 'Waiting..';
       if (error) {
-        text = error;
+        latitud = error;
       } else if (location) {
-        text = JSON.stringify(location.coords.latitude);
+        latitud = JSON.stringify(location.coords.latitude);
     }
 
     let longitud = 'Waiting..';
@@ -48,13 +50,21 @@ export default function HoraActual() {
   //Obtener el clima: https://www.youtube.com/watch?v=M8mslcfiEQI
   //https://developer.weatherunlocked.com/signup/success (Confirmar Email)
   //https://www.youtube.com/watch?v=MjJ1A-Puszw (Obtener current Hour)
+
+  useEffect (async() => {
+    const data = await getClima(); 
+    setClima(data);
+    console.log(data)
+
+  },[]);
   
   return (
     <View style={styles.container}>
       <Text>Hora y Clima</Text>
-      <Text>Latitud: {text}</Text>
+      <Text>Latitud: {latitud}</Text>
       <Text>Longitud: {longitud}</Text>
       <Text>Hora: {currentHour}</Text>
+      <Text>Clima: {clima.current.temp_c}</Text>
     </View>
   );
 }

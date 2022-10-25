@@ -1,12 +1,11 @@
-import { useEffect } from 'react';
 import axios from 'axios';
 import axiosClient from './axiosClient'
 
 //const api_key= "8b3a2a71fd19482db82a44883014eb1f"
 
 
-export const getClima = async (query) => {
-    return axiosClient.get(`http://api.weatherunlocked.com/api/current/40.71,-74.00?app_id=b4030fb7&app_key=667faa988c3c34f1841baa94ff02983a`)
+export const getClima = async () => {
+    return axios.get(`http://api.weatherapi.com/v1/forecast.json?key=a176d44698274c5b96d114333222510&q=London&days=1&aqi=no&alerts=no`)
         .then(res => {
         if (res.status < 300) return res.data;
         else console.log(`Response with status code ${res.status}`);
