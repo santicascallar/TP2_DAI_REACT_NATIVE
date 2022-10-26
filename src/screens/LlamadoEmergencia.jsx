@@ -11,7 +11,9 @@ export default function LlamadoEmergencia() {
     y: 0,
     z: 0,
   });
-  const [subscription, setSubscription] = useState(null);
+  const [acl, setAcl] = useState(0);
+  
+  /*const [subscription, setSubscription] = useState(null);
 
   const _subscribe = () => {
     setSubscription(
@@ -29,7 +31,7 @@ export default function LlamadoEmergencia() {
   useEffect(() => {
     _subscribe();
     return () => _unsubscribe();
-  }, []);
+  }, []);*/
 
 
 
@@ -61,11 +63,16 @@ export default function LlamadoEmergencia() {
   // usage :
   const subscriptionn = configureShake(acceleration => {
     console.log("shake with acceleration " + acceleration);
+    setAcl(acceleration);
   });
 
   return (
     <View style={styles.container}>
       {subscriptionn}
+      if(acl > 2){
+        <Text>Ok</Text>
+      }
+      <Text>hola</Text>
     </View>
   );
 }
