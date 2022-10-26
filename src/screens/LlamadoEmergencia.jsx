@@ -1,6 +1,8 @@
 //https://www.youtube.com/watch?v=xU5TdrNKMHE (Accelerometer)
 //https://www.youtube.com/watch?v=fPa9Sev7il8 (shake detection)
 
+//https://medium.com/@charana.am/react-native-shake-event-w-expo-9dbf17033ea9
+
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
