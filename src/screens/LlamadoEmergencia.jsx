@@ -66,15 +66,16 @@ export default function LlamadoEmergencia() {
   const subscriptionn = configureShake(acceleration => {
     console.log("shake with acceleration " + acceleration);
     setAcl(acceleration);
+    console.log("ok");
   });
 
   return (
     <View style={styles.container}>
-      {subscriptionn}
-      if(acl > 2){
-        <Text>Ok</Text>
-      }
-      <Text>hola</Text>
+      {subscriptionn ? (
+        <Text>ok: </Text>
+      ) : (
+      <Text>nop</Text>
+      )}
     </View>
   );
 }

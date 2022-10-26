@@ -1,8 +1,8 @@
 //Primero instalar dependencia: npx expo install @react-native-async-storage/async-storage
 //Links:https://medium.com/featurepreneur/asyncstorage-in-react-native-with-expo-ff82a3496c9f
-https://docs.expo.dev/versions/latest/sdk/async-storage/
+//https://docs.expo.dev/versions/latest/sdk/async-storage/
 
-/*import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, StyleSheet, Text, TextInput, View, Keyboard } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -27,6 +27,7 @@ const [numero, setNumero] = useState();
   const saveNumero = async () => {
   try {
     await AsyncStorage.setItem("@numero", numero);
+    console.log("ok")
   } catch (err) {
     console.log(err);
   }
@@ -49,7 +50,7 @@ return (
     {numero ? (
     <Text style={styles.heading}>Numero: {numero}</Text>
     ) : (
-    <Text style={styles.heading}>Create your nickname</Text>
+    <Text style={styles.heading}>Create your Numero</Text>
     )}
     <TextInput
     placeholder="Enter Your Numero"
@@ -60,7 +61,7 @@ return (
     }}
     />
     <View style={styles.buttonContainer}>
-    <Button title="Save" onPress={saveNickname} />
+    <Button title="Save" onPress={saveNumero} />
 
     <Button title="DeleteNo" onPress={removeNickname} />
   </View>
@@ -94,4 +95,3 @@ buttonContainer: {
   justifyContent: "space-evenly",
 },
 });
-*/

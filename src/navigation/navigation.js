@@ -7,6 +7,7 @@ import Home from "../screens/Home";
 import Contactos from "../screens/Contactos";
 import HoraActual from "../screens/HoraActual";
 import LlamadoEmergencia from "../screens/LlamadoEmergencia";
+import ConfiguracionNumeroEmergencia from '../screens/ConfiguracionNumeroEmergencia';
 
 const MainStack =()=>{
 
@@ -33,6 +34,10 @@ const MainStack =()=>{
             <Stack.Screen
                 name='LlamadoEmergencia'
                 component={ LlamadoEmergencia }
+            />
+            <Stack.Screen
+                name='ConfiguracionNumeroEmergencia'
+                component={ ConfiguracionNumeroEmergencia }
             />
         </Stack.Navigator>
     </NavigationContainer>
