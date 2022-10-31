@@ -63,7 +63,7 @@ return (
     <View style={styles.buttonContainer}>
     <Button title="Save" onPress={saveNumero} />
 
-    <Button title="DeleteNo" onPress={removeNickname} />
+    <Button title="DeleteNoFunciona" onPress={removeNickname} />
   </View>
   </View>
 );
