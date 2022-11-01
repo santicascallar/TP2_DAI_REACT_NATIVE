@@ -61,12 +61,18 @@ export default function LlamadoEmergencia() {
   
     Accelerometer.addListener(onUpdate);
   };
+
+  const handleSMS = async () => {
+    await Linking.openURL("sms:+821212?body=HOLA")
+  }
   
   // usage :
   const subscriptionn = configureShake(acceleration => {
     console.log("shake with acceleration " + acceleration);
     setAcl(acceleration);
     console.log("ok");
+    handleSMS();
+    //llamar a funcion de enviar msj por wpp
   });
 
   return (
@@ -74,7 +80,7 @@ export default function LlamadoEmergencia() {
       {subscriptionn ? (
         <Text>ok: </Text>
       ) : (
-      <Text>nop</Text>
+      <Text>no</Text>
       )}
     </View>
   );
