@@ -50,8 +50,11 @@ export default function HoraActual() {
   //Obtener el clima: https://www.youtube.com/watch?v=M8mslcfiEQI
 
   useEffect (() => {
-    getClima(latitud, longitud).then(data => setClima(data));
+    if(longitud != 'Waiting..') {
+      getClima(latitud, longitud).then(data => setClima(data));
     console.log(clima);
+    }
+    
   },[]);
   
   return (

@@ -42,20 +42,25 @@ export default function Contactos() {
 
   let getContactos = () => {
     if(contactos !== undefined){
-        return (
-          <View>
-              <FlatList data={contactos}
-              keyExtractor={ (item) => item.id}
-              renderItem = {({item}) => ( 
-              <Text>Nombre: {item.firstName} {item.lastName} // Numero: {item.phoneNumbers && item.phoneNumbers[0] && item.phoneNumbers[0].number} </Text>
-          )}
+      return (
+        <View>
+          <FlatList data={contactos}
+            renderItem = {({item}) => ( 
+              <View key={item.id}>
+                <Text>Nombre: {item.firstName} {item.lastName}</Text>
+              {item.phoneNumbers.map(phone=>(
+                <Text>{phone.number}</Text>
+              ))}
+              </View>
+            )}
+          numColumns={1}
+          keyExtractor={(item, index)=>index}
         />
-          </View>
-      );
-    }
-    else{
-      return <Text>Esperando contactos...</Text>
-    }
+        </View>
+    );
+  } else{
+    return <Text>Esperando contactos...</Text>
+  }
   }
 
   return (

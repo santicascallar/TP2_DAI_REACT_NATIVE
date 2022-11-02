@@ -18,6 +18,9 @@ export default function Home() {
 
       <Text style = {styles.text}>Numero de Emergencia</Text>
       <Button onPress={() => navigation.navigate('ConfiguracionNumeroEmergencia')} title="Numero de Emergencia"/>
+
+      <Text style = {styles.text}>About</Text>
+      <Button onPress={() => navigation.navigate('About')} title="About"/>
     </View>
   );
 }

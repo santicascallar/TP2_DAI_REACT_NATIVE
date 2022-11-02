@@ -4,8 +4,9 @@
 //https://medium.com/@charana.am/react-native-shake-event-w-expo-9dbf17033ea9
 
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Linking } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function LlamadoEmergencia() {
   const [data, setData] = useState({
@@ -14,28 +15,6 @@ export default function LlamadoEmergencia() {
     z: 0,
   });
   const [acl, setAcl] = useState(0);
-  
-  /*const [subscription, setSubscription] = useState(null);
-
-  const _subscribe = () => {
-    setSubscription(
-      Accelerometer.addListener(accelerometerData => {
-        setData(accelerometerData);
-      })
-    );
-  };
-
-  const _unsubscribe = () => {
-    subscription && subscription.remove();
-    setSubscription(null);
-  };
-
-  useEffect(() => {
-    _subscribe();
-    return () => _unsubscribe();
-  }, []);*/
-
-
 
   const configureShake = onShake => {
     // update value every 100ms.
@@ -63,40 +42,31 @@ export default function LlamadoEmergencia() {
   };
 
   const handleSMS = async () => {
-    await Linking.openURL("sms:+821212?body=HOLA")
+    const num = await AsyncStorage.getItem("@numero");
+    await Linking.openURL(`sms:+${num}?body=HOLA`)
   }
   
-  // usage :
+  //usage:
   const subscriptionn = configureShake(acceleration => {
     console.log("shake with acceleration " + acceleration);
     setAcl(acceleration);
     console.log("ok");
     handleSMS();
-    //llamar a funcion de enviar msj por wpp
   });
 
   return (
     <View style={styles.container}>
-      {subscriptionn ? (
-        <Text>ok: </Text>
-      ) : (
-      <Text>no</Text>
-      )}
+      <Text>Shake it</Text>
+      {subscriptionn}
     </View>
   );
-}
-
-function round(n) {
-  if (!n) {
-    return 0;
-  }
-  return Math.floor(n * 100) / 100;
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
     paddingHorizontal: 10,
   },
   text: {
@@ -120,102 +90,3 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
   },
 });
-
-
-/*
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Accelerometer } from 'expo-sensors';
-
-export default function App() {
-  const [data, setData] = useState({
-    x: 0,
-    y: 0,
-    z: 0,
-  });
-  const [subscription, setSubscription] = useState(null);
-
-  const _slow = () => {
-    Accelerometer.setUpdateInterval(1000);
-  };
-
-  const _fast = () => {
-    Accelerometer.setUpdateInterval(16);
-  };
-
-  const _subscribe = () => {
-    setSubscription(
-      Accelerometer.addListener(accelerometerData => {
-        setData(accelerometerData);
-      })
-    );
-  };
-
-  const _unsubscribe = () => {
-    subscription && subscription.remove();
-    setSubscription(null);
-  };
-
-  useEffect(() => {
-    _subscribe();
-    return () => _unsubscribe();
-  }, []);
-
-  const { x, y, z } = data;
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Accelerometer: (in Gs where 1 G = 9.81 m s^-2)</Text>
-      <Text style={styles.text}>
-        x: {round(x)} y: {round(y)} z: {round(z)}
-      </Text>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={subscription ? _unsubscribe : _subscribe} style={styles.button}>
-          <Text>{subscription ? 'On' : 'Off'}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={_slow} style={[styles.button, styles.middleButton]}>
-          <Text>Slow</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={_fast} style={styles.button}>
-          <Text>Fast</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
-}
-
-function round(n) {
-  if (!n) {
-    return 0;
-  }
-  return Math.floor(n * 100) / 100;
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 10,
-  },
-  text: {
-    textAlign: 'center',
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    alignItems: 'stretch',
-    marginTop: 15,
-  },
-  button: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#eee',
-    padding: 10,
-  },
-  middleButton: {
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderColor: '#ccc',
-  },
-});
-
-*/

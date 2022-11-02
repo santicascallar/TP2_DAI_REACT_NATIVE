@@ -1,10 +1,10 @@
 //primero instalar npx expo install expo-barcode-scanner
 //Esto es para escanear
-/*import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View, StyleSheet, Button, Image } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
-export default function App() {
+export default function About() {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
 
@@ -19,7 +19,7 @@ export default function App() {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    alert(`${data} has been scanned!`);
   };
 
   if (hasPermission === null) {
@@ -36,14 +36,24 @@ export default function App() {
         style={StyleSheet.absoluteFillObject}
       />
       {scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
+      <Image 
+        style = {styles.logo}
+        source={require("../imgs/codigo_qr.png")}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0.60,
     flexDirection: 'column',
     justifyContent: 'center',
   },
-});*/
+  logo: {
+    marginTop: 600,
+    width: 150,
+    height: 150,
+    alignSelf: "center"
+  },
+});
