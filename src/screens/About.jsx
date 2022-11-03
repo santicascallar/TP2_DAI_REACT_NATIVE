@@ -1,5 +1,3 @@
-//primero instalar npx expo install expo-barcode-scanner
-//Esto es para escanear
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Button, Image } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';

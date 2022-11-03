@@ -9,7 +9,6 @@ export default function Contactos() {
   useEffect(()=>{
     (async () => {
       const {status}= await Contacts.requestPermissionsAsync();
-
       if(status === 'granted') {
         const {data}= await Contacts.getContactsAsync({
           fields: [Contacts.Fields.FirstName, Contacts.Fields.LastName, Contacts.Fields.PhoneNumbers]
@@ -47,25 +46,25 @@ export default function Contactos() {
           <FlatList data={contactos}
             renderItem = {({item}) => ( 
               <View key={item.id}>
-                <Text>Nombre: {item.firstName} {item.lastName}</Text>
-              {item.phoneNumbers.map(phone=>(
-                <Text>{phone.number}</Text>
-              ))}
+                <Text style={{paddingTop: 20}}>Nombre: {item.firstName} {item.lastName}</Text>
+                {item.phoneNumbers.map(phone=>(
+                  <Text>Numero: {phone.number}</Text>
+                ))}
               </View>
             )}
-          numColumns={1}
-          keyExtractor={(item, index)=>index}
-        />
+            keyExtractor={(item, index)=>index}
+          />
         </View>
     );
-  } else{
+  } 
+  else{
     return <Text>Esperando contactos...</Text>
   }
   }
 
   return (
     <View style={styles.container}>
-      <Text>Lista Contactos:</Text>
+      <Text style={{paddingTop: 30}}>Lista Contactos:</Text>
       {getContactos()}
     </View>
   );

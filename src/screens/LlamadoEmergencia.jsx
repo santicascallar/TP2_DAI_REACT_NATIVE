@@ -1,8 +1,3 @@
-//https://www.youtube.com/watch?v=xU5TdrNKMHE (Accelerometer)
-//https://www.youtube.com/watch?v=fPa9Sev7il8 (shake detection)
-
-//https://medium.com/@charana.am/react-native-shake-event-w-expo-9dbf17033ea9
-
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Linking } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
@@ -43,7 +38,7 @@ export default function LlamadoEmergencia() {
 
   const handleSMS = async () => {
     const num = await AsyncStorage.getItem("@numero");
-    await Linking.openURL(`sms:+${num}?body=HOLA`)
+    await Linking.openURL(`sms:+${num}?body=Trabajo de DAI Realizado por Uriel Rozic y Santiago Cascallar`)
   }
   
   //usage:

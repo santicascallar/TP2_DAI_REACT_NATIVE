@@ -25,6 +25,14 @@ export default function HoraActual() {
     })();
   }, []);
 
+  useEffect(() => {
+      let hours = new Date().getHours()
+      let min = new Date().getMinutes()
+      let sec = new Date().getSeconds()
+      
+      setCurrentHour(hours + ':' + min + ':' + sec)
+    }, []);
+
     let latitud = 'Waiting..';
       if (error) {
         latitud = error;
@@ -38,22 +46,10 @@ export default function HoraActual() {
       } else if (location) {
         longitud = JSON.stringify(location.coords.longitude);
     }
-  
-    useEffect(() => {
-      let hours = new Date().getHours()
-      let min = new Date().getMinutes()
-      let sec = new Date().getSeconds()
-      
-      setCurrentHour(hours + ':' + min + ':' + sec)
-    }, []);
-  
-  //Obtener el clima: https://www.youtube.com/watch?v=M8mslcfiEQI
 
   useEffect (() => {
-    if(longitud != 'Waiting..') {
       getClima(latitud, longitud).then(data => setClima(data));
-    console.log(clima);
-    }
+      console.log(clima);
     
   },[]);
   
