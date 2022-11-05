@@ -25,9 +25,6 @@ export default function Home() {
   );
 }
 
-//arreglar lo de clima
-//verificar lo de llamado de emergencia si es null
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
