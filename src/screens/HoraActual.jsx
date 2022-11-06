@@ -10,7 +10,6 @@ export default function HoraActual() {
   const [currentHour, setCurrentHour] = useState('');
   const [clima, setClima] = useState([]);
 
-
   useEffect(() => {
     (async () => {
       
@@ -50,7 +49,6 @@ export default function HoraActual() {
   useEffect (() => {
       getClima(latitud, longitud).then(data => setClima(data));
       console.log(clima);
-    
   },[]);
   
   return (
