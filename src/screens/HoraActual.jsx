@@ -19,7 +19,8 @@ export default function HoraActual() {
         return;
       }
 
-      let localizar = await Location.getCurrentPositionAsync({});
+      let localizar = await Location.getCurrentPositionAsync({})
+      //.then()
       setLocation(localizar);
     })();
   }, []);
