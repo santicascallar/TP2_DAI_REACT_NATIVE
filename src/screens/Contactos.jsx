@@ -48,7 +48,7 @@ export default function Contactos() {
               <View key={item.id}>
                 <Text style={{paddingTop: 20}}>Nombre: {item.firstName} {item.lastName}</Text>
                 {item.phoneNumbers.map(phone=>(
-                  <Text>Numero: {phone.number}</Text>
+                  <Text>Numero: {phone?.number?}</Text>
                 ))}
               </View>
             )}
